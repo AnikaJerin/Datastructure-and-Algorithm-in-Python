@@ -114,7 +114,7 @@ class LinkedList:
     def insert_values(self, data_list):
         self.head = None
         for data in data_list:
-            self.insert_at_end(data)
+            self.insert_at_the_end(data)
 
 if __name__ == '__main__':
     ll = LinkedList()
@@ -123,5 +123,6 @@ if __name__ == '__main__':
     ll.insert_at_the_end(3)
     ll.index_wise_insert(4, 2)
     # ll.index_wise_remove(2)
+    # ll.insert_values(["banana","mango","grapes","orange"])
     ll.get_length()
     ll.print()
