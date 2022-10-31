@@ -50,7 +50,7 @@ class LinkedList:
         while itr:
             llstr += str(itr.data) + ' --> ' if itr.next else str(itr.data)
             itr = itr.next
-        print('insert_at_the_end: ',llstr)
+        print('lls: ',llstr)
 
     def get_length(self):
         count = 0
@@ -60,12 +60,68 @@ class LinkedList:
             itr = itr.next
         print('count: ',count)
         return count
-       
+    
+    def index_wise_insert(self,data,index):
+        # insert 3 at 2 in 1-->2-->4
+        # insert the current head in curr, and iterate all element of lls one by one.[1,2,4]
+        # if current node index-1 = given index,
+           # create a new node with the given data and set the current next element to this new node's next. Node(3,pointer at 4) at 2nd index
+        # set this new node as current node's next
+        # else upadte curr with curr.next
+        # update index count +=1
+
+        if index<0 or index>self.get_length():
+            raise Exception("Invalid Index")
+
+        if index==0:
+            self.insert_at_begining(data)
+            return
+
+        curr = self.head
+        count = 0
+        while curr:
+            if count == index-1:
+                node = Node(data,curr.next)
+                curr.next = node
+                break
+            curr = curr.next
+            count+=1
+
+    def index_wise_remove(self,index):
+        # remove index 2 from 1-->2-->4
+        # insert the current head in curr, and iterate all element of lls one by one.[1,2,4]
+        # if current node index-1 = given index,
+        # set the next node of the given node as the next node of current node
+        # else upadte curr with curr.next
+        # update index count +=1
+
+        if index<0 or index>self.get_length():
+            raise Exception("Invalid Index")
+
+        if index==0:
+            self.insert_at_begining(data)
+            return
+
+        curr = self.head
+        count = 0
+        while curr:
+            if count == index-1:
+                curr.next = curr.next.next
+                break
+            curr = curr.next
+            count+=1
+            
+    def insert_values(self, data_list):
+        self.head = None
+        for data in data_list:
+            self.insert_at_end(data)
 
 if __name__ == '__main__':
     ll = LinkedList()
     ll.insert_at_the_beginning(1)
     ll.insert_at_the_beginning(2)
     ll.insert_at_the_end(3)
-    ll.print()
+    ll.index_wise_insert(4, 2)
+    # ll.index_wise_remove(2)
     ll.get_length()
+    ll.print()
