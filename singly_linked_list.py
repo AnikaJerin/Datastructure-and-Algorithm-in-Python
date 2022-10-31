@@ -21,19 +21,51 @@ class LinkedList:
         
         node = Node(data,self.head)
         self.head = node
+        
+    def insert_at_the_end(self,data):
+     # first get the whole linked list
+     # take one element one at a time and if  the next element to it exits then,put that next element in itr variable(start at the head)
+     # when the last element is found and kept inside the itr last line will execute
+                 #--> which is
+
+        if self.head is None:
+            self.head = Node(data,None) # since we are inserting at the end that's why we will create a lls with just 1 node with given data
+            # print('Linked List is empty')
+            # return
+        else:
+            itr = self.head
+            llstr = ''
+            while itr.next:
+                itr = itr.next
+                
+            itr.next = Node(data,None)
+
+    def print(self):
+        # PRINT_RESULTS FOR INSERT AT THE BEGINNING AND END METHOD
         if self.head is None:
             print("Linked list is empty")
             return
-        # else:
-        itr = self.head  # represent each element of the linked list one by one
+        itr = self.head # represent each element of the linked list one by one
         llstr = ''
         while itr:
             llstr += str(itr.data) + ' --> ' if itr.next else str(itr.data)
             itr = itr.next
-        print(llstr)
+        print('insert_at_the_end: ',llstr)
 
+    def get_length(self):
+        count = 0
+        itr = self.head
+        while itr:
+            count+=1
+            itr = itr.next
+        print('count: ',count)
+        return count
+       
 
 if __name__ == '__main__':
     ll = LinkedList()
     ll.insert_at_the_beginning(1)
     ll.insert_at_the_beginning(2)
+    ll.insert_at_the_end(3)
+    ll.print()
+    ll.get_length()
