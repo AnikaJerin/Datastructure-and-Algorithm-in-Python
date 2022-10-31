@@ -21,7 +21,9 @@ class LinkedList:
         
         node = Node(data,self.head)
         self.head = node
-        
+
+
+
     def insert_at_the_end(self,data):
      # first get the whole linked list
      # take one element one at a time and if  the next element to it exits then,put that next element in itr variable(start at the head)
@@ -40,6 +42,7 @@ class LinkedList:
                 
             itr.next = Node(data,None)
 
+
     def print(self):
         # PRINT_RESULTS FOR INSERT AT THE BEGINNING AND END METHOD
         if self.head is None:
@@ -52,6 +55,8 @@ class LinkedList:
             itr = itr.next
         print('lls: ',llstr)
 
+
+
     def get_length(self):
         count = 0
         itr = self.head
@@ -61,6 +66,8 @@ class LinkedList:
         print('count: ',count)
         return count
     
+
+
     def index_wise_insert(self,data,index):
         # insert 3 at 2 in 1-->2-->4
         # insert the current head in curr, and iterate all element of lls one by one.[1,2,4]
@@ -87,6 +94,8 @@ class LinkedList:
             curr = curr.next
             count+=1
 
+
+
     def index_wise_remove(self,index):
         # remove index 2 from 1-->2-->4
         # insert the current head in curr, and iterate all element of lls one by one.[1,2,4]
@@ -110,11 +119,35 @@ class LinkedList:
                 break
             curr = curr.next
             count+=1
-            
+
+
+
     def insert_values(self, data_list):
         self.head = None
         for data in data_list:
             self.insert_at_the_end(data)
+    
+
+    def insert_value_wise(self, data_after, data_to_insert):
+        if self.head is None:
+            return
+        curr = self.head
+        while curr:
+            if curr.data == data_after:
+                curr.next = Node(data_to_insert, curr.next)
+                break
+            curr = curr.next # else
+    
+
+    def remove_value_wise(self,data_to_remove):
+        if self.head is None:
+            return
+        curr = self.head
+        while curr.next:
+            if curr.next.data == data_to_remove:
+                curr.next = curr.next.next
+                break
+            curr = curr.next 
 
 if __name__ == '__main__':
     ll = LinkedList()
@@ -122,6 +155,8 @@ if __name__ == '__main__':
     ll.insert_at_the_beginning(2)
     ll.insert_at_the_end(3)
     ll.index_wise_insert(4, 2)
+    ll.insert_value_wise(4, 44)
+    # ll.remove_value_wise(44)
     # ll.index_wise_remove(2)
     # ll.insert_values(["banana","mango","grapes","orange"])
     ll.get_length()
