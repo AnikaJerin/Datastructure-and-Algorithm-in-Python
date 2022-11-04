@@ -1,5 +1,6 @@
 from collections import deque
-
+#**** COMPLEXITY --> PUSH/POP == O(1) ****
+#**** COMPLEXITY --> SEARCH ELEMENT BY VALUE O(n) ****
 class Stack:
     def __init__(self):
         self.container = deque()
@@ -38,7 +39,7 @@ if __name__ == '__main__':
 
 
 
-# WITHOUT CLASS 
+# SECOND METHOD 
 import collections
 from collections import deque
 stack = collections.deque()
@@ -51,7 +52,7 @@ def reverse_string(string):
         r_string += stack.pop()
     return r_string
 
-print('without class: ',reverse_string('My Name is Anika'))
+print('method 2: ',reverse_string('My Name is Anika'))
 
 
    
