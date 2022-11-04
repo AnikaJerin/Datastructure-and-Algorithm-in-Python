@@ -73,10 +73,11 @@ i = 0
 for i in range(len(city)):
     for j in range(len(area)):
         if i == j:
-            if city[i] in def_dict.keys():
-                def_dict[city[i]].append(area[j])
-            else:
-                def_dict[city[i]].append(area[j])
+            def_dict[city[i]].append(area[j])
+            # if city[i] in def_dict.keys():
+            #     def_dict[city[i]].append(area[j])
+            # else:
+            #     def_dict[city[i]].append(area[j])
 print('dict_5',def_dict)
 print(def_dict['Dhaka'])
 
