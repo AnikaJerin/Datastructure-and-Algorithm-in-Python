@@ -1,3 +1,19 @@
+# WHAT IS HASH FUNCTION?
+
+"""
+WHAT DOES A HASH FUCTION DO?
+in simple words, a hash function coverts a string key into an index of a list
+"""
+"""
+IMPLEMENTING HASH FUNCTION USING ASCII:
+COLLISION HANDLING IN HASH MAP: COMPLEXITY O(n)
+"""
+"""
+COMPLEXITY --> LOOK UP BY KEY O(1)
+           -->INSERTION/DELETION O(1)
+"""
+
+
 population_dict = {}
 with open("/Users/anika/Documents/dicttable.csv","r") as f:
     for line in f:
