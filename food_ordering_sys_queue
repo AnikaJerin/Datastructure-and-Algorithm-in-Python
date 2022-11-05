@@ -1,0 +1,76 @@
+import threading
+import time
+import collections
+from collections import deque
+
+#** METHOD ONE ***
+class Queue:
+    def __init__(self):
+        self.buffer = deque()
+
+    def enqueue(self, val):
+        self.buffer.appendleft(val)
+
+    def dequeue(self):
+        if len(self.buffer)==0:
+            print("Queue is empty")
+            return
+
+        return self.buffer.pop()
+
+    def is_empty(self):
+        return len(self.buffer) == 0
+
+    def size(self):
+        return len(self.buffer)
+
+food_order_queue = Queue()
+
+
+def getting_order(orders):
+    for order in orders:
+        print('Got an order for: ',order)
+        food_order_queue.enqueue(order)
+        time.sleep(0.5)
+
+
+def serve_order():
+    time.sleep(1)
+    while True:
+        order = food_order_queue.dequeue()
+        print("Now serving: ",order)
+        time.sleep(2)
+    
+
+if __name__ == '__main__':
+    orders = ['pizza','samosa','pasta','biryani','burger']
+    t1 = threading.Thread(target=getting_order, args=(orders,))
+    t2 = threading.Thread(target=serve_order)
+
+    t1.start()
+    t2.start()
+
+
+#*** METHOD TWO ***
+
+queue = collections.deque()
+def place_order(new_order):
+    for order in new_order:
+        queue.appendleft(order)
+        print('now placing order for: ',order)
+        time.sleep(0.3)
+
+def serve_food():
+    time.sleep(3)
+    while len(queue) != 0:
+        food = queue.pop()
+        print('now serving:', food)
+        time.sleep(2)
+    print('queue is empty')
+
+new_order = ['Pasta','Pizza','Burger','Cake','Coffee']
+th1 = threading.Thread(target=place_order, args=(new_order,)) 
+th2 = threading.Thread(target=serve_food)
+th1.start()
+th2.start()
+
