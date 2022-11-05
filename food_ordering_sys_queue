@@ -1,3 +1,5 @@
+#*** FIFO **
+
 import threading
 import time
 import collections
@@ -71,6 +73,7 @@ def serve_food():
 new_order = ['Pasta','Pizza','Burger','Cake','Coffee']
 th1 = threading.Thread(target=place_order, args=(new_order,)) 
 th2 = threading.Thread(target=serve_food)
+
 th1.start()
 th2.start()
 
