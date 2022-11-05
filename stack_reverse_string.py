@@ -1,6 +1,8 @@
+#** LIFO ***
 from collections import deque
 #**** COMPLEXITY --> PUSH/POP == O(1) ****
 #**** COMPLEXITY --> SEARCH ELEMENT BY VALUE O(n) ****
+
 class Stack:
     def __init__(self):
         self.container = deque()
@@ -51,7 +53,6 @@ def reverse_string(string):
     while len(stack) != 0:
         r_string += stack.pop()
     return r_string
-
 print('method 2: ',reverse_string('My Name is Anika'))
 
 
