@@ -29,6 +29,9 @@ class TreeNode:
         return level
 
     def print_tree(self):
+        # this will first print electronics(parent/root)
+        # then it'll print its children and their descendants (laptop-->mac,surface,thinkpad)
+        # then it'll go back to cell phone,its descendants and do the same for tv as well
         spaces = ' ' * self.get_level() * 3
         prefix = spaces + "|__" if self.parent else ""
         print(prefix + self.data)
